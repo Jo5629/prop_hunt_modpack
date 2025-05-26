@@ -1,6 +1,6 @@
 # Prop Hunt
 
-As of May 26, 2025, everyone **MUST** be at Luanti 5.12 or higher because it is not backwards compatible. You can not see the person when they turn into a node for people that are not at 5.12.
+As of May 26, 2025, everyone **MUST** be at Luanti 5.12 or higher. I tested a little bit and you can not see the person when they turn into a node for people that are **NOT** at 5.12.
 
 ## Prop Hunt Stick
 
