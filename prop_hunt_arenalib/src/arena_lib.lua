@@ -43,6 +43,6 @@ arena_lib.register_minigame("prop_hunt", {
     disabled_damage_types = {"fall", "node_damage", "drown"},
 })
 
-audio_lib.register_sound("sfx", "noisemaker", "Noisemaker")
-audio_lib.register_sound("sfx", "radar_ping", "Radar Ping", {gain = 0.6})
-audio_lib.register_sound("sfx", "taser", "Taser", {gain = 0.6, max_hear_distance = 16})
+audio_lib.register_sound("sfx", "noisemaker", "Noisemaker", {gain = 2, max_hear_distance = 20})
+audio_lib.register_sound("sfx", "radar_ping", "Radar Ping", {gain = 2})
+audio_lib.register_sound("sfx", "taser", "Taser", {gain = 1.25, max_hear_distance = 16})

@@ -8,20 +8,15 @@ core.register_privilege("prop_hunt", {
     give_to_admin = false,
 })
 
+--[[
+core.register_on_newplayer(function(player)
+	local playername = player:get_player_name()
+	local privs = core.get_player_privs(playername)
+	privs["prop_hunt"] = true
+	core.set_player_privs(playername, privs)
+end)
+]]
+
 dofile(modpath .. "/api.lua")
 dofile(modpath .. "/stick.lua")
 dofile(modpath .. "/commands.lua")
-
---[[ Tests.
-core.register_on_chat_message(function(name, message)
-    local player = core.get_player_by_name(name)
-    if not player then return end
-    if message == "block" then
-        local nodename = "default:mese"
-        prop_hunt.enter(player, nodename)
-    end
-    if message == "exit" then
-        prop_hunt.exit(player)
-    end
-end)
-]]

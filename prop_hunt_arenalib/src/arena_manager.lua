@@ -108,7 +108,7 @@ arena_lib.on_end("prop_hunt", function(arena, winners, is_forced)
         core.after(0.2, function()
             if player and def.teamID == 2 then
                 prop_hunt.exit(player)
-                player:set_pos(vector.offset(player:get_pos(), 0, 1.25, 0))
+                player:set_pos(vector.offset(player:get_pos(), 0, 1.15, 0))
             end
         end)
     end

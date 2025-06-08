@@ -26,5 +26,5 @@ core.register_tool("prop_hunt:stick", {
     end,
     tool_capabilities = {
         can_drop = false,
-    }
+    },
 })

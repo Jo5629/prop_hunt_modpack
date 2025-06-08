@@ -90,11 +90,11 @@ function prop_hunt.enter(player, node, pos)
             eye_height = 0.5 * visual_scale,
             stepheight = 0.6,
             range = 2,
-            glow = glow or 0.5,
+            glow = glow or 0,
             makes_footstep_sound = true,
             show_on_minimap = false,
         })
-        player:set_pos(vector.offset(player:get_pos(), 0, 1.25, 0))
+        player:set_pos(vector.offset(player:get_pos(), 0, 1.15, 0))
         players[name] = true
     end
 end
@@ -102,8 +102,7 @@ end
 function prop_hunt.exit(player)
     if players[player:get_player_name()] then
         prop_hunt.reset_model(player)
-        local newpos = vector.offset(player:get_pos(), 0, 1.25, 0)
-        if newpos then player:set_pos(newpos) end
+        player:set_pos(vector.offset(player:get_pos(), 0, 1.15, 0))
         players[player:get_player_name()] = nil
     end
 end
