@@ -40,14 +40,14 @@ local function equals(o1, o2, ignore_mt)
 end
 
 local BOX_DEFAULT = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5}
-local BOX_OBJ_DEFAULT = {-0.495, -0.495, -0.495, 0.495, 0.495, 0.495}
+local BOX_OBJ_DEFAULT = BOX_DEFAULT
 
 local function get_box(box_type, pos, node)
     local box = core.get_node_boxes(box_type, pos, node)[1]
     if type(box[1]) ~= "number" then --> More than one box and Luanti does not support it with objects as of 5.12.
         box = BOX_OBJ_DEFAULT
     end
-    core.log("action", box_type .. " " .. dump(box))
+    --core.log("action", box_type .. " " .. dump(box))
     return box
 end
 
@@ -80,19 +80,19 @@ function prop_hunt.enter(player, node, pos)
 
         player:set_properties({
             visual = "node",
-            static_save = false,
+            node = node,
             physical = true,
             collide_with_objects = true,
             pointable = true,
             collisionbox = collision_box,
             selectionbox = selection_box,
-            node = node,
             eye_height = 0.5 * visual_scale,
             stepheight = 0.6,
             range = 2,
-            glow = glow or 0,
             makes_footstep_sound = true,
             show_on_minimap = false,
+            backface_culling = false,
+            glow = glow or 0,
         })
         player:set_pos(vector.offset(player:get_pos(), 0, 1.15, 0))
         players[name] = true
