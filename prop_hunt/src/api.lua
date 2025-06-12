@@ -66,7 +66,6 @@ function prop_hunt.enter(player, node, pos)
         player:get_meta():set_string("prop_hunt:node", node.name)
 
         local def = core.registered_nodes[node.name]
-        local glow = def.light_source and math.floor(def.light_source / 2 + 0.5)
         local visual_scale = def.visual_scale or 1
 
         local node_box = get_box("node_box", pos, node)
@@ -92,8 +91,8 @@ function prop_hunt.enter(player, node, pos)
             makes_footstep_sound = true,
             show_on_minimap = false,
             backface_culling = false,
-            glow = glow or 0,
         })
+
         player:set_pos(vector.offset(player:get_pos(), 0, 1.15, 0))
         players[name] = true
     end
@@ -136,3 +135,16 @@ core.register_on_respawnplayer(function(player)
         end)
     end
 end)
+
+if core.get_modpath("wielded_light") then
+    wielded_light.register_player_lightstep(function(player)
+        local name = player:get_player_name()
+        wielded_light.track_user_entity(player, "prop_hunt", nil)
+        if players[name] then
+            local node = player:get_meta():get_string("prop_hunt:node")
+            if (core.registered_nodes[node].light_source or 0) > 0 then
+                wielded_light.track_user_entity(player, "prop_hunt", node)
+            end
+        end
+    end)
+end
